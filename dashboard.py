@@ -14,6 +14,7 @@ class Dashboard(QtWidgets.QMainWindow, Ui_MainWindow):
         self.setupUi(self)
 
         self.__register__ = None
+        self.__attendance____ = None
 
         self.btn_Register.clicked.connect(self.Register)
         # self.btn_Attendance.clicked.connect(self.Attendance)

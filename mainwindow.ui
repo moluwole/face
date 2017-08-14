@@ -51,6 +51,9 @@
     <property name="toolTip">
      <string>Enter Password</string>
     </property>
+    <property name="echoMode">
+     <enum>QLineEdit::Password</enum>
+    </property>
     <property name="placeholderText">
      <string>Enter Password</string>
     </property>

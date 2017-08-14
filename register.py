@@ -2,6 +2,7 @@ import sys
 from PyQt5 import QtWidgets, uic
 from PyQt5.QtWidgets import QMessageBox
 from get_face import Getface
+from face_capture import FaceCapture
 import pymysql
 
 connection = pymysql.connect(host='localhost', user='root', password='', db='face', charset='utf8mb4',
@@ -20,24 +21,29 @@ class Register(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def classifier(self):
         student_name = self.txt_name.text()
-        matric_num = self.txt.matric_num.text()
-        address = self.txt_address.text()
-        sex = self.cmb_sex.itemData(self.cmb_sex.currentIndex()).toPyObject()
+        matric_num = self.txt_matric_num.text()
+        address = self.txt_address.toPlainText()
+        sex = str(self.cmb_sex.currentText())
+        dept = str(self.cmb_dept.currentText())
         dob = self.dte_dob.date()
+        dob = dob.toString("MM/dd/yyyy")
 
-        sql = "Select * from student where matric_num=%s"
-        cursor = connection.cursor()
-        cursor.execute(sql, matric_num)
-        result = cursor.fetchall()
-        if int(len(result)) > 0:
-            QMessageBox.about(self, 'Error', 'Student Details Exists Already in Database')
+        if student_name == "" or matric_num == "" or address == "" or sex == "" or dept == "" or dob == "":
+            QMessageBox.about(self, 'Error', 'Provide the student details to continue')
         else:
-            sql = "Insert into student(name, matric_num, address, sex, dob) Values(%s,%s,%s,%s,%s)"
+            sql = "Select * from student_details where matric_num=%s"
             cursor = connection.cursor()
-            cursor.execute(sql, (student_name, matric_num, address, sex, dob))
-            connection.commit()
-            Getface("oluwole")
-            QMessageBox.about(self, 'Success', 'Student Details Registered Successfully')
+            cursor.execute(sql, matric_num)
+            result = cursor.fetchall()
+            if int(len(result)) > 0:
+                QMessageBox.about(self, 'Error', 'Student Details Exists Already in Database')
+            else:
+                sql = "Insert into student_details(name, matric_num, address, sex, dept, dob) Values(%s,%s,%s,%s,%s,%s)"
+                cursor = connection.cursor()
+                cursor.execute(sql, (student_name, matric_num, address, sex, dept, dob))
+                connection.commit()
+                FaceCapture(matric_num)
+                QMessageBox.about(self, 'Success', 'Student Details Registered Successfully')
 
         # self.__get_face__ = GetFace()
         # self.__get_face__.__init__()

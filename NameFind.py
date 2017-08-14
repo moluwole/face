@@ -50,7 +50,7 @@ def add_db(id):
 
 def ID2Name(ID, conf):
     if ID > 0:
-        NameString = "Name: " + Names[ID-1] + " Distance: " + (str(round(conf)))                                # Find the Name using the index of the ID
+        NameString = "Matric Number: " + Names[ID-1] + " Distance: " + (str(round(conf)))                                # Find the Name using the index of the ID
     else:
         NameString = " Face Not Recognised "  # Find the Name using the index of the ID
 
@@ -59,11 +59,11 @@ def ID2Name(ID, conf):
 #     ------------------- THIS FUNCTION READ THE FILE AND ADD THE NAME TO THE END OF THE FILE  -----------------
 
 
-def AddName(name):
-    Info = open("Names.txt", "r+")
+def AddName(matric_num):
+    Info = open("matric.txt", "a+")
     ID = ((sum(1 for line in Info))+1)
-    Info.write(str(ID) + "," + name + "\n")
-    print ("Name Stored in " + str(ID))
+    Info.write(str(ID) + "," + matric_num + "\n")
+    print ("ID Stored in " + str(ID))
     Info.close()
     return ID
 
