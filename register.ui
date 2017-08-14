@@ -1,0 +1,228 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>register_2</class>
+ <widget class="QMainWindow" name="register_2">
+  <property name="windowModality">
+   <enum>Qt::ApplicationModal</enum>
+  </property>
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>561</width>
+    <height>335</height>
+   </rect>
+  </property>
+  <property name="minimumSize">
+   <size>
+    <width>561</width>
+    <height>335</height>
+   </size>
+  </property>
+  <property name="maximumSize">
+   <size>
+    <width>561</width>
+    <height>335</height>
+   </size>
+  </property>
+  <property name="windowTitle">
+   <string>Login</string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <widget class="QLineEdit" name="txt_name">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>90</y>
+      <width>231</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>Student Name</string>
+    </property>
+   </widget>
+   <widget class="QLabel" name="label">
+    <property name="geometry">
+     <rect>
+      <x>20</x>
+      <y>20</y>
+      <width>211</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="font">
+     <font>
+      <pointsize>20</pointsize>
+     </font>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QLabel {color: red}</string>
+    </property>
+    <property name="text">
+     <string>REGISTER</string>
+    </property>
+   </widget>
+   <widget class="Line" name="line">
+    <property name="geometry">
+     <rect>
+      <x>0</x>
+      <y>50</y>
+      <width>561</width>
+      <height>20</height>
+     </rect>
+    </property>
+    <property name="orientation">
+     <enum>Qt::Horizontal</enum>
+    </property>
+   </widget>
+   <widget class="QLineEdit" name="txt_matric_num">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>134</y>
+      <width>231</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>Matric Number</string>
+    </property>
+   </widget>
+   <widget class="QPlainTextEdit" name="txt_address">
+    <property name="geometry">
+     <rect>
+      <x>30</x>
+      <y>180</y>
+      <width>231</width>
+      <height>101</height>
+     </rect>
+    </property>
+    <property name="placeholderText">
+     <string>Address</string>
+    </property>
+   </widget>
+   <widget class="QComboBox" name="cmb_sex">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>90</y>
+      <width>221</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="currentText">
+     <string>Male</string>
+    </property>
+    <property name="currentIndex">
+     <number>0</number>
+    </property>
+    <property name="Items" stdset="0">
+     <string/>
+    </property>
+    <item>
+     <property name="text">
+      <string>Male</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Female</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QComboBox" name="cmb_dept">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>134</y>
+      <width>221</width>
+      <height>30</height>
+     </rect>
+    </property>
+    <item>
+     <property name="text">
+      <string>Computer Science</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Computer Engineering</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Business Administration</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Marketing</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Civil Engineering</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Mechanical Engineering</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Architecture</string>
+     </property>
+    </item>
+    <item>
+     <property name="text">
+      <string>Building Construction</string>
+     </property>
+    </item>
+   </widget>
+   <widget class="QDateEdit" name="dte_dob">
+    <property name="geometry">
+     <rect>
+      <x>290</x>
+      <y>180</y>
+      <width>221</width>
+      <height>31</height>
+     </rect>
+    </property>
+    <property name="calendarPopup">
+     <bool>true</bool>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btn_train_classifier">
+    <property name="geometry">
+     <rect>
+      <x>340</x>
+      <y>230</y>
+      <width>171</width>
+      <height>41</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">QPushButton#btn_train_classifier {color: red; background-color: white }</string>
+    </property>
+    <property name="text">
+     <string>Train Classifier/Recognizer</string>
+    </property>
+   </widget>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>561</width>
+     <height>19</height>
+    </rect>
+   </property>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
