@@ -26,7 +26,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Login</string>
+      <string>Register:: Attendance System</string>
   </property>
   <widget class="QWidget" name="centralwidget">
    <widget class="QLineEdit" name="txt_name">

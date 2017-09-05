@@ -1,7 +1,9 @@
 import sys
-from PyQt5 import QtWidgets, uic
-from PyQt5.QtWidgets import QMessageBox, QDialog
+
 import pymysql
+from PyQt5 import QtWidgets, uic
+from PyQt5.QtWidgets import QMessageBox
+
 from dashboard import Dashboard
 
 # from PyQt4 import QtCore, QtGui, uic
@@ -9,7 +11,7 @@ from dashboard import Dashboard
 connection = pymysql.connect(host='localhost', user='root', password='', db='face', charset='utf8mb4',
                              cursorclass=pymysql.cursors.DictCursor)
 
-qtCreatorFile = "mainwindow.ui"  # Enter file here.
+qtCreatorFile = "login.ui"  # Enter file here.
 
 Ui_MainWindow, QtBaseClass = uic.loadUiType(qtCreatorFile)
 
@@ -34,7 +36,6 @@ class MyApp(QtWidgets.QMainWindow, Ui_MainWindow):
             sql = "Select * from users where username=%s and pwd=%s"
             cursor.execute(sql, (username, password))
             result = cursor.fetchall()
-            print result
             if int(len(result)) <= 0:
                 QMessageBox.about(self, "Error", "Invalid username and password. "
                                                  "Provide a valid username and password to continue ")

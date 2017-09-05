@@ -1,9 +1,10 @@
 import sys
-from PyQt5 import QtWidgets, uic
-from PyQt5.QtWidgets import QMessageBox
-from get_face import Getface
-from face_capture import FaceCapture
+
 import pymysql
+from PyQt5 import QtWidgets, uic, QtCore
+from PyQt5.QtWidgets import QMessageBox
+
+from face_capture import FaceCapture
 
 connection = pymysql.connect(host='localhost', user='root', password='', db='face', charset='utf8mb4',
                              cursorclass=pymysql.cursors.DictCursor)
@@ -18,6 +19,7 @@ class Register(QtWidgets.QMainWindow, Ui_MainWindow):
         Ui_MainWindow.__init__(self)
         self.setupUi(self)
         self.btn_train_classifier.clicked.connect(self.classifier)
+        self.dte_dob.setDate(QtCore.QDate.currentDate())
 
     def classifier(self):
         student_name = self.txt_name.text()

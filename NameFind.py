@@ -1,10 +1,11 @@
 #     ----------- FUNCTION TO READ THE FILE AND ADD THE NAMES AND IDs IN TO TUPLES
 
-import cv2
 import math
 import time
-import pymysql
 from datetime import datetime
+
+import cv2
+import pymysql
 
 connection = pymysql.connect(host='localhost', user='root', password='', db='face', charset='utf8mb4',
                              cursorclass=pymysql.cursors.DictCursor)
@@ -18,13 +19,13 @@ glass_cas = cv2.CascadeClassifier('Haar/haarcascade_eye_tree_eyeglasses.xml')
 WHITE = [255, 255, 255]
 
 def FileRead():
-    Info = open("Names.txt", "r")                       # Open th text file in readmode
+    Info = open("matric.txt", "r")  # Open th text file in readmode
     NAME = []                                           # The tuple to store Names
     while (True):                                       # Read all the lines in the file and store them in two tuples
         Line = Info.readline()
         if Line == '':
             break
-        NAME.append (Line.split(",")[1].rstrip())
+        NAME.append(Line.split(",")[1].rstrip())
        
     return NAME                                     # Return the two tuples
         
@@ -43,6 +44,10 @@ def add_db(id):
         cursor = connection.cursor()
         cursor.execute(sql, (id, curr_date, "Present"))
         connection.commit()
+    else:
+        sql = "Update attendance Set status=%s where matric_num=%s and dte=%s"
+        cursor = connection.cursor()
+        cursor.execute(sql, ("Present", id, curr_date))
 
 
 #     ------------------- FUNCTION TO FIND THE NAME  -----------------------------------------------------------
@@ -50,7 +55,9 @@ def add_db(id):
 
 def ID2Name(ID, conf):
     if ID > 0:
-        NameString = "Matric Number: " + Names[ID-1] + " Distance: " + (str(round(conf)))                                # Find the Name using the index of the ID
+        NameString = "Matric Number: " + Names[ID - 1] + " Distance: " + (
+        str(round(conf)))  # Find the Name using the index of the ID
+        add_db(Names[ID - 1])
     else:
         NameString = " Face Not Recognised "  # Find the Name using the index of the ID
 

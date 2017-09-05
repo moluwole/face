@@ -1,7 +1,8 @@
-import cv2
-import numpy as np
-import NameFind
 import os
+
+import cv2
+
+import NameFind
 from trainer import Trainer
 
 
@@ -38,7 +39,7 @@ class FaceCapture:
                 # cv2.waitKey(300)
                 cv2.imshow("CAPTURED PHOTO", frame)  # show the captured image
             cv2.imshow('Face Recognition System Capture Faces', gray)  # Show the video
-            if Count == 50:
+            if Count == 150:
                 Trainer()
                 break
             if cv2.waitKey(1) & 0xFF == ord('q'):
